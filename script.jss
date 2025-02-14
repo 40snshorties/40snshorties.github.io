@@ -18,14 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const countUp = () => {
-        const startDate = new Date("Jan 24, 2025 12:00:00").getTime(); // 12:00 PM start time
+        const startDate = new Date("January 24, 2025 12:00:00").getTime(); // Noon on Jan 24, 2025
         const now = new Date().getTime();
         const timeElapsed = now - startDate;
+
+        if (timeElapsed < 0) {
+            console.warn("Start date is in the future. Check your system time!");
+            return;
+        }
 
         const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+        console.log(`Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}`);
 
         if (daysElem && hoursElem && minutesElem && secondsElem) {
             daysElem.innerText = days;
