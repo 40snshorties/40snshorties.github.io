@@ -24,7 +24,7 @@ body {
 /* Countdown Container Styles */
 .countdown-container {
     text-align: center;
-    background: rgba(210, 105, 30, 0.7);
+    background: rgba(90, 40, 140, 0.5); /* Light Transparent Purple */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -52,7 +52,7 @@ h1 {
 
 /* Individual Countdown Box Styles */
 #countdown div {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7); /* Darker but still transparent for readability */
     color: #ffffff;
     padding: 15px;
     border-radius: 5px;
@@ -112,9 +112,26 @@ footer {
 
 /* Play Button Styles */
 .play-button {
-    background-color: #d87a2b;
+    background-color: #9c4dcc; /* Light Transparent Purple */
     color: #ffffff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 600px) {
+    #countdown {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #countdown div {
+        width: 150px;
+        height: 120px;
+        font-size: 20px;
+    }
+}
