@@ -1,0 +1,120 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    background-image: url('https://github.com/40snshorites/40snshorites.github.io/raw/main/tangledV2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+/* Countdown Container Styles */
+.countdown-container {
+    text-align: center;
+    background: rgba(210, 105, 30, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+}
+
+/* Heading Styles */
+h1 {
+    color: #ffffff;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Countdown Number Styles */
+#countdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Individual Countdown Box Styles */
+#countdown div {
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    width: 150px;
+    height: 120px;
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Space between number and label */
+#countdown span {
+    margin-bottom: 10px;
+}
+
+/* Ensure the "seconds" box is the same width and height as others */
+#countdown div:last-child {
+    width: 150px;
+    height: 120px;
+}
+
+/* Message Styles */
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+/* Footer Message */
+footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    color: #ffdead;
+    font-weight: bold;
+    animation: fadeInOut 6s infinite;
+}
+
+/* Fade in and out animation */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Play Button Styles */
+.play-button {
+    background-color: #d87a2b;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
