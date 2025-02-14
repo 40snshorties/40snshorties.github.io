@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const now = new Date().getTime();
         const timeLeft = endDate - now;
 
+        if (timeLeft < 0) {
+            clearInterval(timer);
+            document.getElementById("message").innerText = "Happy 9 Month Anniversary!";
+            return;
+        }
+
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
@@ -27,13 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("hours").innerText = hours;
         document.getElementById("minutes").innerText = minutes;
         document.getElementById("seconds").innerText = seconds;
-
-        if (timeLeft < 0) {
-            clearInterval(timer);
-            document.getElementById("message").innerText = "Happy 9 Month Anniversary!";
-        }
     };
 
     // Start the countdown
     const timer = setInterval(countdown, 1000);
+    countdown(); // Run once to avoid delay in displaying numbers
 });
