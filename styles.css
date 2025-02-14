@@ -21,117 +21,53 @@ body {
     position: relative;
 }
 
-/* Countdown Container Styles */
+/* Countdown Container */
 .countdown-container {
     text-align: center;
-    background: rgba(90, 40, 140, 0.5); /* Light Transparent Purple */
+    background: rgba(50, 50, 50, 0.8); /* Less transparent dark gray */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     width: 100%;
-    position: relative;
 }
 
-/* Heading Styles */
-h1 {
-    color: #ffffff;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-/* Countdown Number Styles */
+/* Countdown Boxes */
 #countdown {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
     font-size: 28px;
     font-weight: bold;
 }
 
-/* Individual Countdown Box Styles */
 #countdown div {
-    background: rgba(0, 0, 0, 0.7); /* Darker but still transparent for readability */
+    background: rgba(138, 43, 226, 0.5); /* Light transparent purple */
     color: #ffffff;
     padding: 15px;
     border-radius: 5px;
-    width: 150px;
-    height: 120px;
+    width: 120px;
+    height: 100px;
     text-align: center;
     font-size: 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
 }
 
-/* Space between number and label */
-#countdown span {
-    margin-bottom: 10px;
-}
-
-/* Ensure the "seconds" box is the same width and height as others */
-#countdown div:last-child {
-    width: 150px;
-    height: 120px;
-}
-
-/* Message Styles */
-#message {
-    margin-top: 20px;
-    font-size: 20px;
-    color: #ffffff;
-}
-
-/* Footer Message */
-footer {
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
-    font-size: 16px;
-    color: #ffdead;
-    font-weight: bold;
-    animation: fadeInOut 6s infinite;
-}
-
-/* Fade in and out animation */
-@keyframes fadeInOut {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-/* Play Button Styles */
-.play-button {
-    background-color: #9c4dcc; /* Light Transparent Purple */
-    color: #ffffff;
+/* Play Button */
+#play-music {
+    background-color: orange;
+    color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    font-size: 18px;
     cursor: pointer;
-    font-size: 16px;
+    border-radius: 5px;
     margin-top: 20px;
 }
 
-/* Media Queries for Mobile Devices */
-@media (max-width: 600px) {
-    #countdown {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    #countdown div {
-        width: 150px;
-        height: 120px;
-        font-size: 20px;
-    }
+#play-music:hover {
+    background-color: darkorange;
 }
