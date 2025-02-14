@@ -1,26 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Countdown</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('background-music');
+    const playButton = document.getElementById('play-music');
 
-    <div class="countdown-container">
-        <h1>Time Since We Met ❤️</h1>
-        <div id="countdown">
-            <div><span id="days">0</span> Days</div>
-            <div><span id="hours">0</span> Hours</div>
-            <div><span id="minutes">0</span> Minutes</div>
-            <div><span id="seconds">0</span> Seconds</div>
-        </div>
-        <button id="play-music">Play Music</button>
-        <audio id="background-music" src="letmeloveyou.mp3"></audio>
-    </div>
+    // Play music when button is clicked
+    playButton.addEventListener('click', () => {
+        audio.volume = 0.5;
+        audio.play().catch(error => console.error("Error playing audio:", error));
+    });
 
-    <script src="script.js"></script>
+    // Count **up** from January 24, 2025, 12:00 PM
+    const countUp = () => {
+        const startDate = new Date(2025, 0, 24, 12, 0, 0).getTime(); // Jan = 0 in JS
+        const now = new Date().getTime();
+        const timeElapsed = now - startDate;
 
-</body>
-</html>
+        console.log("Start Date:", new Date(2025, 0, 24, 12, 0, 0)); // Debugging
+        console.log("Now:", new Date());
+        console.log("Time Elapsed:", timeElapsed);
+
+        if (timeElapsed >= 0) {
+            const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        } else {
+            console.log("Time elapsed is negative. Check system time.");
+        }
+    };
+
+    // Update every second
+    setInterval(countUp, 1000);
+    countUp(); // Run immediately so there's no delay
+});
