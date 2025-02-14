@@ -1,41 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('background-music');
-    const playButton = document.getElementById('play-audio');
+    const playButton = document.getElementById('play-music');
+    const daysElem = document.getElementById("days");
+    const hoursElem = document.getElementById("hours");
+    const minutesElem = document.getElementById("minutes");
+    const secondsElem = document.getElementById("seconds");
 
-    // Add event listener to the play button
-    playButton.addEventListener('click', () => {
-        audio.volume = 0.5; // Set volume level (0.0 to 1.0)
-        audio.play().then(() => {
-            console.log('Audio is playing');
-        }).catch(error => {
-            console.error('Error playing audio:', error);
+    if (playButton && audio) {
+        playButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.volume = 0.5;
+                audio.play().catch(error => console.error("Error playing audio:", error));
+            } else {
+                audio.pause();
+            }
         });
-    });
+    }
 
-    // Countdown function to calculate time remaining
-    const countdown = () => {
-        const endDate = new Date("Aug 20, 2024 00:00:00").getTime();
+    const countUp = () => {
+        const startDate = new Date("Jan 24, 2025 12:00:00").getTime(); // 12:00 PM start time
         const now = new Date().getTime();
-        const timeLeft = endDate - now;
+        const timeElapsed = now - startDate;
 
-        if (timeLeft < 0) {
-            clearInterval(timer);
-            document.getElementById("message").innerText = "Happy 9 Month Anniversary!";
-            return;
+        const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+        if (daysElem && hoursElem && minutesElem && secondsElem) {
+            daysElem.innerText = days;
+            hoursElem.innerText = hours;
+            minutesElem.innerText = minutes;
+            secondsElem.innerText = seconds;
         }
-
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-        document.getElementById("days").innerText = days;
-        document.getElementById("hours").innerText = hours;
-        document.getElementById("minutes").innerText = minutes;
-        document.getElementById("seconds").innerText = seconds;
     };
 
-    // Start the countdown
-    const timer = setInterval(countdown, 1000);
-    countdown(); // Run once to avoid delay in displaying numbers
+    setInterval(countUp, 1000);
+    countUp(); // Run immediately on load
 });
