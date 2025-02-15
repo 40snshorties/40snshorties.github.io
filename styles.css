@@ -1,61 +1,32 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f8ff; /* Light background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #f0f0f0;
 }
 
-/* Countdown Container */
 .container {
-    background: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+    margin-top: 50px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent dark background */
+    display: inline-block;
 }
 
-/* Heading */
-h1 {
-    color: white;
+.timer {
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* Countdown Box Styles */
-.timer-box {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-/* Individual Time Box */
-.time {
-    background: rgba(128, 0, 128, 0.5); /* Light transparent purple */
+button {
+    background-color: rgba(138, 43, 226, 0.4); /* Light transparent purple */
     color: white;
-    padding: 20px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
     border-radius: 5px;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
 }
 
-/* Label Text */
-.label {
-    font-size: 16px;
-    font-weight: normal;
-    margin-top: 5px;
+button:hover {
+    background-color: rgba(138, 43, 226, 0.6); /* Slightly darker purple on hover */
 }
