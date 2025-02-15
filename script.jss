@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (timeLeft < 0) {
             clearInterval(timer);
-            document.getElementById("message").innerText = "Happy 9 Month Anniversary!";
+            document.getElementById("message").innerText = "Time Since We Met";
             return;
         }
 
