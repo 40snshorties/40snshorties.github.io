@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Countdown function to calculate time remaining
     const countdown = () => {
-        const endDate = new Date("Aug 20, 2024 00:00:00").getTime();
+        const endDate = new Date("Janurary 24, 2025 00:00:00").getTime();
         const now = new Date().getTime();
         const timeLeft = endDate - now;
 
