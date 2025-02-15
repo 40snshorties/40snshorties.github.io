@@ -8,11 +8,7 @@
 /* Body Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f8ff;
-    background-image: url('https://github.com/40snshorites/40snshorites.github.io/raw/main/tangledV2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #000000; /* Pure black */
     display: flex;
     flex-direction: column;
     justify-content: center;
