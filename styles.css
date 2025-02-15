@@ -1,32 +1,78 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    margin-top: 50px;
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    background-image: url('https://github.com/40snshorites/40snshorites.github.io/raw/main/tangledV2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+}
+
+/* Countdown Container */
+.countdown-container {
+    text-align: center;
+    background: rgba(50, 50, 50, 0.8);
     padding: 20px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent dark background */
-    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
 }
 
-.timer {
-    font-size: 24px;
-    margin-bottom: 20px;
+/* Countdown Boxes */
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    flex-wrap: wrap; /* Ensures responsiveness */
 }
 
-button {
-    background-color: rgba(138, 43, 226, 0.4); /* Light transparent purple */
+#countdown div {
+    background: rgba(138, 43, 226, 0.7); /* Slightly darker purple for better contrast */
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    width: 110px; /* Slightly smaller for better responsiveness */
+    height: 90px;
+    text-align: center;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Play Button */
+#play-music {
+    background-color: orange;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    outline: none;
 }
 
-button:hover {
-    background-color: rgba(138, 43, 226, 0.6); /* Slightly darker purple on hover */
+#play-music:hover,
+#play-music:focus {
+    background-color: darkorange;
 }
