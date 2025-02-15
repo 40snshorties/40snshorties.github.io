@@ -1,26 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('background-music');
-    const playButton = document.getElementById('play-music');
     const daysElem = document.getElementById("days");
     const hoursElem = document.getElementById("hours");
     const minutesElem = document.getElementById("minutes");
     const secondsElem = document.getElementById("seconds");
 
-    if (playButton && audio) {
-        playButton.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.volume = 0.5;
-                audio.play().catch(error => console.error("Error playing audio:", error));
-            } else {
-                audio.pause();
-            }
-        });
-    }
-
     const countUp = () => {
-        const startDate = new Date("January 24, 2025 12:00:00").getTime(); // Noon on Jan 24, 2025
+        // Set start time: January 24, 2025, at 12:00 PM (Noon)
+        const startDate = new Date(2025, 0, 24, 12, 0, 0).getTime(); // Months are 0-based in JS
         const now = new Date().getTime();
         const timeElapsed = now - startDate;
+
+        // Debugging log to check time difference
+        console.log("Time Elapsed (ms):", timeElapsed);
 
         if (timeElapsed < 0) {
             console.warn("Start date is in the future. Check your system time!");
@@ -34,12 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(`Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}`);
 
-        if (daysElem && hoursElem && minutesElem && secondsElem) {
-            daysElem.innerText = days;
-            hoursElem.innerText = hours;
-            minutesElem.innerText = minutes;
-            secondsElem.innerText = seconds;
-        }
+        // Update UI if elements exist
+        if (daysElem) daysElem.innerText = days;
+        if (hoursElem) hoursElem.innerText = hours;
+        if (minutesElem) minutesElem.innerText = minutes;
+        if (secondsElem) secondsElem.innerText = seconds;
     };
 
     setInterval(countUp, 1000);
