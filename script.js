@@ -1,17 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Set the start date/time to match 81 days, 22 hours, 7 minutes ago from now
-    const now = new Date();
-    const startDate = new Date(
-        now.getTime() - (
-            81 * 24 * 60 * 60 * 1000 + // 81 days
-            22 * 60 * 60 * 1000 +      // 22 hours
-            7 * 60 * 1000               // 7 minutes
-        )
-    ).getTime();
+    // Set the real start date/time (e.g., when you met)
+    const startDate = new Date(2025, 0, 24, 17, 0, 0).getTime(); 
+    // Jan=0, 24th, 5 PM
 
     function countUp() {
-        const currentTime = new Date().getTime();
-        let timeElapsed = currentTime - startDate;
+        const now = new Date().getTime();
+        let timeElapsed = now - startDate;
+
+        if (timeElapsed < 0) timeElapsed = 0;
 
         const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
