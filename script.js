@@ -1,18 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Set the real start date/time (e.g., when you met)
-    const startDate = new Date(2025, 0, 24, 17, 0, 0).getTime(); 
-    // Jan=0, 24th, 5 PM
+
+    // 💖 When you met
+    const startDate = new Date(2025, 9, 1, 23, 50, 0).getTime();
 
     function countUp() {
-        const now = new Date().getTime();
-        let timeElapsed = now - startDate;
+        const now = Date.now();
+        const diff = now - startDate;
 
-        if (timeElapsed < 0) timeElapsed = 0;
-
-        const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
 
         document.getElementById("days").textContent = days;
         document.getElementById("hours").textContent = hours;
@@ -20,6 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("seconds").textContent = seconds;
     }
 
-    countUp(); // run immediately
+    countUp();                 // run instantly
     setInterval(countUp, 1000); // update every second
 });
