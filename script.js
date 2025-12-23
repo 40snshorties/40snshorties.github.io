@@ -1,36 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Starting time: 81 days, 22 hours, 7 minutes, 0 seconds
-    let days = 81;
-    let hours = 22;
-    let minutes = 7;
-    let seconds = 0;
+    // Set the start date/time to match 81 days, 22 hours, 7 minutes ago from now
+    const now = new Date();
+    const startDate = new Date(
+        now.getTime() - (
+            81 * 24 * 60 * 60 * 1000 + // 81 days
+            22 * 60 * 60 * 1000 +      // 22 hours
+            7 * 60 * 1000               // 7 minutes
+        )
+    ).getTime();
 
-    function updateDisplay() {
+    function countUp() {
+        const currentTime = new Date().getTime();
+        let timeElapsed = currentTime - startDate;
+
+        const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
         document.getElementById("days").textContent = days;
         document.getElementById("hours").textContent = hours;
         document.getElementById("minutes").textContent = minutes;
         document.getElementById("seconds").textContent = seconds;
     }
 
-    function countUp() {
-        seconds++;
-
-        if (seconds === 60) {
-            seconds = 0;
-            minutes++;
-        }
-        if (minutes === 60) {
-            minutes = 0;
-            hours++;
-        }
-        if (hours === 24) {
-            hours = 0;
-            days++;
-        }
-
-        updateDisplay();
-    }
-
-    updateDisplay();
-    setInterval(countUp, 1000);
+    countUp(); // run immediately
+    setInterval(countUp, 1000); // update every second
 });
