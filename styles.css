@@ -5,31 +5,29 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-image: url('https://raw.githubusercontent.com/40snshorties/40snshorties.github.io/main/tangledV2.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-
-    /* Add a semi-transparent purple overlay to match boxes */
-    background-color: rgba(70, 30, 120, 0.4);
+    background-color: rgba(50, 20, 80, 0.4); /* purplish overlay for better contrast */
 }
 
 .countdown-container {
-    background: rgba(160, 120, 200, 0.45); /* light transparent purple */
+    background: rgba(180, 130, 220, 0.45); /* light transparent purple */
     padding: 25px;
     border-radius: 15px;
 }
 
 h1 {
-    color: white;
+    color: #fff2ff; /* soft pinkish-white */
     margin-bottom: 20px;
+    font-size: 28px;
 }
 
 #countdown {
@@ -40,9 +38,9 @@ h1 {
 }
 
 .time-box {
-    background: rgba(0, 0, 0, 0.6); /* darker readable boxes */
-    color: white;
-    width: 130px;
+    background: rgba(20, 10, 40, 0.7); /* darker purple/black */
+    color: #ffd9ff; /* bright soft text for numbers */
+    width: 140px;
     height: 120px;
 
     display: flex;
@@ -50,20 +48,21 @@ h1 {
     justify-content: center;
     align-items: center;
 
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 26px;
     font-weight: bold;
 }
 
 .label {
     font-size: 14px;
+    color: #ffc0ff; /* softer label color */
     margin-top: 6px;
 }
 
 footer {
     position: absolute;
     bottom: 10px;
-    color: #a080c8; /* match purple-ish boxes */
+    color: #c8a0ff; /* matching purple */
     font-weight: bold;
     animation: fade 6s infinite;
 }
