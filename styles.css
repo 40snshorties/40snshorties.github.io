@@ -12,14 +12,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-
-    /* Dark purple gradient background */
+    justify-content: flex-start; /* keep content starting from top */
     background: linear-gradient(180deg, #1a0a2a 0%, #3a0f4f 100%);
     position: relative;
 
-    overflow-x: hidden; /* prevent horizontal scroll from hearts */
-    overflow-y: auto;   /* allow vertical scrolling if needed */
+    overflow-x: hidden; /* no horizontal scroll */
+    overflow-y: auto;   /* allow vertical scroll */
 }
 
 /* ===== FLOATING HEARTS ===== */
@@ -37,7 +35,6 @@ body {
     animation: floatUp 6s linear infinite;
 }
 
-/* Different heart positions and delays */
 .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
 .heart:nth-child(2) { left: 25%; animation-delay: 1s; }
 .heart:nth-child(3) { left: 40%; animation-delay: 2s; }
@@ -53,22 +50,25 @@ body {
 
 /* ===== MAIN CONTAINER ===== */
 .countdown-container {
-    background: rgba(200, 180, 255, 0.7); /* light lavender */
+    background: rgba(180, 160, 255, 0.8); /* lighter lavender rectangle */
     padding: 30px;
     border-radius: 14px;
     text-align: center;
     max-width: 650px;
     width: 95%;
-    box-shadow: 0 0 15px rgba(200,180,255,0.3);
-    z-index: 2; /* keep above hearts */
+    box-shadow: 0 0 15px rgba(200,180,255,0.5);
     position: relative;
+    z-index: 2;
 }
 
 /* ===== TITLE ===== */
 h1 {
-    color: #f0e0ff; /* lighter lavender for contrast */
-    font-size: 28px;
+    color: #ffe0ff; /* soft light lavender */
+    font-size: 30px;
+    font-weight: bold;
     margin-bottom: 25px;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+    letter-spacing: 1px;
 }
 
 /* ===== COUNTDOWN ROW ===== */
@@ -81,8 +81,8 @@ h1 {
 
 /* ===== COUNTDOWN BOXES ===== */
 #countdown div {
-    background: rgba(90, 0, 120, 0.7); /* deep purple */
-    color: #f0e0ff; /* light text for readability */
+    background: rgba(90, 0, 120, 0.8); /* deep purple */
+    color: #ffe0ff; /* light text for readability */
     width: 120px;
     height: 120px;
     border-radius: 10px;
@@ -103,20 +103,20 @@ h1 {
 #message {
     margin-top: 18px;
     font-size: 18px;
-    color: #f0e0ff; /* matches container theme */
+    color: #ffe0ff;
 }
 
 /* ===== FOOTER ===== */
 footer {
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 16px;
     font-weight: bold;
-    color: #d8baff; /* lavender tone to match the boxes */
+    color: #d8baff;
     text-align: center;
     animation: fadeInOut 14s infinite;
 }
 
-/* MOBILE VERTICAL */
+/* ===== MOBILE VERTICAL ===== */
 @media (max-width: 600px) and (orientation: portrait) {
     #countdown {
         flex-direction: column;
@@ -130,14 +130,16 @@ footer {
         font-size: 20px;
     }
 
+    h1 {
+        font-size: 26px;
+    }
+
     footer {
-        margin-top: 50px;
-        transform: translateY(60px);
-        font-size: 15px;
+        margin-top: 20px; /* closer to rectangle but still visible */
     }
 }
 
-/* MOBILE LANDSCAPE */
+/* ===== MOBILE LANDSCAPE ===== */
 @media (max-width: 900px) and (orientation: landscape) {
     #countdown div {
         width: 110px;
@@ -145,8 +147,12 @@ footer {
         font-size: 18px;
     }
 
+    h1 {
+        font-size: 24px;
+    }
+
     footer {
-        margin-top: 30px;
+        margin-top: 20px;
     }
 }
 
