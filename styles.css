@@ -15,13 +15,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .countdown-container {
     background: rgba(160, 120, 200, 0.45); /* light transparent purple */
     padding: 25px;
     border-radius: 15px;
-    text-align: center;
 }
 
 h1 {
