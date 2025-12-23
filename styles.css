@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://raw.githubusercontent.com/40snshorties/40snshorties.github.io/main/tangledV2.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.countdown-container {
+    background: rgba(160, 120, 200, 0.45); /* light transparent purple */
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+#countdown {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: rgba(0, 0, 0, 0.6); /* darker readable boxes */
+    color: white;
+    width: 130px;
+    height: 120px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.label {
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    color: #ffd9b3;
+    font-weight: bold;
+    animation: fade 6s infinite;
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Mobile vertical */
+@media (max-width: 600px) {
+    #countdown {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .time-box {
+        width: 200px;
+    }
+
+    footer {
+        bottom: 5px;
+    }
+}
