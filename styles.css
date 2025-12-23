@@ -5,19 +5,25 @@
     box-sizing: border-box;
 }
 
+/* ===== HTML + BODY (PREVENT WHITE SCROLL) ===== */
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    background: linear-gradient(180deg, #1a0a2a 0%, #3a0f4f 100%);
+    overflow-x: hidden;
+}
+
 /* ===== BODY ===== */
 body {
     font-family: Arial, sans-serif;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* keep content starting from top */
-    background: linear-gradient(180deg, #1a0a2a 0%, #3a0f4f 100%);
+    justify-content: flex-start;
     position: relative;
-
-    overflow-x: hidden; /* no horizontal scroll */
-    overflow-y: auto;   /* allow vertical scroll */
+    padding-top: 40px;
+    padding-bottom: 80px;
 }
 
 /* ===== FLOATING HEARTS ===== */
@@ -25,50 +31,56 @@ body {
     position: absolute;
     width: 12px;
     height: 12px;
-    background-color: #e0c8ff; /* lavender hearts */
+    background-color: #e0c8ff;
+    opacity: 0.7;
     clip-path: polygon(
         50% 0%, 61% 10%, 70% 20%, 80% 35%, 80% 50%, 
         70% 65%, 60% 75%, 50% 85%, 40% 75%, 30% 65%, 
         20% 50%, 20% 35%, 30% 20%, 39% 10%
     );
-    opacity: 0.7;
-    animation: floatUp 6s linear infinite;
+    animation: floatUp 7s linear infinite;
 }
 
 .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-.heart:nth-child(2) { left: 25%; animation-delay: 1s; }
-.heart:nth-child(3) { left: 40%; animation-delay: 2s; }
-.heart:nth-child(4) { left: 55%; animation-delay: 3s; }
-.heart:nth-child(5) { left: 70%; animation-delay: 4s; }
-.heart:nth-child(6) { left: 85%; animation-delay: 5s; }
+.heart:nth-child(2) { left: 25%; animation-delay: 1.5s; }
+.heart:nth-child(3) { left: 40%; animation-delay: 3s; }
+.heart:nth-child(4) { left: 55%; animation-delay: 4.5s; }
+.heart:nth-child(5) { left: 70%; animation-delay: 6s; }
+.heart:nth-child(6) { left: 85%; animation-delay: 7.5s; }
 
 @keyframes floatUp {
-    0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0.7; }
-    50% { transform: translateY(50vh) scale(1) rotate(15deg); opacity: 0.9; }
-    100% { transform: translateY(-10vh) scale(0.5) rotate(-15deg); opacity: 0; }
+    0% {
+        transform: translateY(100vh) scale(0.6);
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-20vh) scale(1);
+        opacity: 0;
+    }
 }
 
 /* ===== MAIN CONTAINER ===== */
 .countdown-container {
-    background: rgba(180, 160, 255, 0.8); /* lighter lavender rectangle */
-    padding: 30px;
-    border-radius: 14px;
+    background: rgba(190, 170, 255, 0.75);
+    padding: 28px;
+    border-radius: 16px;
     text-align: center;
     max-width: 650px;
     width: 95%;
-    box-shadow: 0 0 15px rgba(200,180,255,0.5);
-    position: relative;
+    box-shadow: 0 0 18px rgba(200,180,255,0.45);
     z-index: 2;
 }
 
 /* ===== TITLE ===== */
 h1 {
-    color: #ffe0ff; /* soft light lavender */
-    font-size: 30px;
+    color: #f5e6ff;
+    font-size: 28px;
     font-weight: bold;
-    margin-bottom: 25px;
-    text-shadow: 0 0 8px rgba(255,255,255,0.3);
-    letter-spacing: 1px;
+    margin-bottom: 24px;
+    text-shadow: 0 0 6px rgba(255,255,255,0.25);
 }
 
 /* ===== COUNTDOWN ROW ===== */
@@ -76,23 +88,23 @@ h1 {
     display: flex;
     justify-content: center;
     gap: 18px;
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap;
 }
 
 /* ===== COUNTDOWN BOXES ===== */
 #countdown div {
-    background: rgba(90, 0, 120, 0.8); /* deep purple */
-    color: #ffe0ff; /* light text for readability */
+    background: rgba(70, 0, 110, 0.85);
+    color: #f5e6ff;
     width: 120px;
     height: 120px;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 22px;
     font-weight: bold;
-    box-shadow: 0 0 10px rgba(200,180,255,0.5);
+    box-shadow: 0 0 10px rgba(200,180,255,0.4);
 }
 
 #countdown span {
@@ -101,27 +113,26 @@ h1 {
 
 /* ===== MESSAGE ===== */
 #message {
-    margin-top: 18px;
+    margin-top: 16px;
     font-size: 18px;
-    color: #ffe0ff;
+    color: #f5e6ff;
 }
 
 /* ===== FOOTER ===== */
 footer {
-    margin-top: 20px;
+    margin-top: 24px;
     font-size: 16px;
     font-weight: bold;
     color: #d8baff;
     text-align: center;
-    animation: fadeInOut 14s infinite;
+    animation: fadeInOut 16s infinite;
 }
 
 /* ===== MOBILE VERTICAL ===== */
-@media (max-width: 600px) and (orientation: portrait) {
+@media (max-width: 600px) {
     #countdown {
         flex-direction: column;
-        gap: 15px;
-        align-items: center;
+        gap: 14px;
     }
 
     #countdown div {
@@ -131,28 +142,11 @@ footer {
     }
 
     h1 {
-        font-size: 26px;
-    }
-
-    footer {
-        margin-top: 20px; /* closer to rectangle but still visible */
-    }
-}
-
-/* ===== MOBILE LANDSCAPE ===== */
-@media (max-width: 900px) and (orientation: landscape) {
-    #countdown div {
-        width: 110px;
-        height: 90px;
-        font-size: 18px;
-    }
-
-    h1 {
         font-size: 24px;
     }
 
     footer {
-        margin-top: 20px;
+        margin-top: 18px;
     }
 }
 
