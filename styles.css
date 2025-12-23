@@ -59,6 +59,8 @@ body {
     box-shadow: 0 0 15px rgba(200,180,255,0.5);
     position: relative;
     z-index: 2;
+
+    margin: 40px auto 0 auto; /* ✅ THIS centers it perfectly */
 }
 
 /* ===== TITLE ===== */
