@@ -1,97 +1,164 @@
+/* ===== RESET ===== */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-html, body {
-    background: #0b0616;
-    color: #e6ddff;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    min-height: 100%;
-    overflow-x: hidden;
-}
-
+/* ===== BODY ===== */
 body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* keep content starting from top */
+    background: linear-gradient(180deg, #1a0a2a 0%, #3a0f4f 100%);
+    position: relative;
+
+    overflow-x: hidden; /* no horizontal scroll */
+    overflow-y: auto;   /* allow vertical scroll */
+}
+
+/* ===== FLOATING HEARTS ===== */
+.heart {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #e0c8ff; /* lavender hearts */
+    clip-path: polygon(
+        50% 0%, 61% 10%, 70% 20%, 80% 35%, 80% 50%, 
+        70% 65%, 60% 75%, 50% 85%, 40% 75%, 30% 65%, 
+        20% 50%, 20% 35%, 30% 20%, 39% 10%
+    );
+    opacity: 0.7;
+    animation: floatUp 6s linear infinite;
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 25%; animation-delay: 1s; }
+.heart:nth-child(3) { left: 40%; animation-delay: 2s; }
+.heart:nth-child(4) { left: 55%; animation-delay: 3s; }
+.heart:nth-child(5) { left: 70%; animation-delay: 4s; }
+.heart:nth-child(6) { left: 85%; animation-delay: 5s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0.7; }
+    50% { transform: translateY(50vh) scale(1) rotate(15deg); opacity: 0.9; }
+    100% { transform: translateY(-10vh) scale(0.5) rotate(-15deg); opacity: 0; }
+}
+
+/* ===== MAIN CONTAINER ===== */
+.countdown-container {
+    background: rgba(180, 160, 255, 0.8); /* lighter lavender rectangle */
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    max-width: 650px;
+    width: 95%;
+    box-shadow: 0 0 15px rgba(200,180,255,0.5);
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== TITLE ===== */
+h1 {
+    color: #ffe0ff; /* soft light lavender */
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+    letter-spacing: 1px;
+}
+
+/* ===== COUNTDOWN ROW ===== */
+#countdown {
     display: flex;
     justify-content: center;
-    padding: 40px 16px;
+    gap: 18px;
+    flex-wrap: nowrap; 
 }
 
-/* MAIN CARD */
-.container {
-    max-width: 420px;
-    width: 100%;
-    background: rgba(120, 90, 200, 0.18);
-    border-radius: 22px;
-    padding: 28px 20px 36px;
-    backdrop-filter: blur(10px);
-}
-
-/* TITLE */
-.title {
-    text-align: center;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 22px;
-    color: #e9ddff;
-}
-
-/* TIMER */
-.timer {
+/* ===== COUNTDOWN BOXES ===== */
+#countdown div {
+    background: rgba(90, 0, 120, 0.8); /* deep purple */
+    color: #ffe0ff; /* light text for readability */
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(200,180,255,0.5);
 }
 
-.box {
-    flex: 1;
-    background: rgba(180, 150, 255, 0.25);
-    border-radius: 16px;
-    padding: 16px 8px;
+#countdown span {
+    margin-bottom: 6px;
+}
+
+/* ===== MESSAGE ===== */
+#message {
+    margin-top: 18px;
+    font-size: 18px;
+    color: #ffe0ff;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #d8baff;
     text-align: center;
+    animation: fadeInOut 14s infinite;
 }
 
-/* NUMBER ANIMATION */
-.time-value {
-    height: 1.3em;
-    overflow: hidden;
-}
-
-.time-value span {
-    display: block;
-    font-size: 1.6rem;
-    font-weight: 600;
-    animation: slideFade 0.45s ease;
-}
-
-@keyframes slideFade {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
+/* ===== MOBILE VERTICAL ===== */
+@media (max-width: 600px) and (orientation: portrait) {
+    #countdown {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    #countdown div {
+        width: 220px;
+        height: 110px;
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    footer {
+        margin-top: 20px; /* closer to rectangle but still visible */
     }
 }
 
-.label {
-    font-size: 0.75rem;
-    margin-top: 6px;
-    opacity: 0.8;
+/* ===== MOBILE LANDSCAPE ===== */
+@media (max-width: 900px) and (orientation: landscape) {
+    #countdown div {
+        width: 110px;
+        height: 90px;
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    footer {
+        margin-top: 20px;
+    }
 }
 
-/* BOTTOM TEXT */
-.love {
-    text-align: center;
-    margin-top: 26px;
-    font-size: 1.05rem;
-    color: #d6c8ff;
-    animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+/* ===== FADE ANIMATION ===== */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }
