@@ -1,90 +1,130 @@
+/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ===== BODY ===== */
 body {
-    font-family: 'Arial', sans-serif;
-    background-image: url('https://raw.githubusercontent.com/40snshorties/40snshorties.github.io/main/tangledV2.jpg');
+    font-family: Arial, sans-serif;
+    background-image: url("https://raw.githubusercontent.com/40snshorties/40snshorties.github.io/main/tangledV2.jpg");
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    background-repeat: no-repeat;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    background-color: rgba(50, 20, 80, 0.4); /* purplish overlay for better contrast */
+    justify-content: center;
+    position: relative;
 }
 
+/* ===== MAIN CONTAINER ===== */
 .countdown-container {
-    background: rgba(180, 130, 220, 0.45); /* light transparent purple */
-    padding: 25px;
-    border-radius: 15px;
+    background: rgba(160, 120, 200, 0.55); /* light transparent purple */
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    max-width: 650px;
+    width: 95%;
 }
 
+/* ===== TITLE ===== */
 h1 {
-    color: #fff2ff; /* soft pinkish-white */
-    margin-bottom: 20px;
+    color: #ffffff;
     font-size: 28px;
+    margin-bottom: 25px;
 }
 
+/* ===== COUNTDOWN ROW ===== */
 #countdown {
     display: flex;
-    gap: 15px;
     justify-content: center;
+    gap: 18px;
     flex-wrap: wrap;
 }
 
-.time-box {
-    background: rgba(20, 10, 40, 0.7); /* darker purple/black */
-    color: #ffd9ff; /* bright soft text for numbers */
-    width: 140px;
+/* ===== BOXES ===== */
+#countdown div {
+    background: rgba(0, 0, 0, 0.65);
+    color: #eaeaea;
+    width: 150px;
     height: 120px;
-
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    border-radius: 12px;
-    font-size: 26px;
+    justify-content: center;
+    font-size: 22px;
     font-weight: bold;
 }
 
-.label {
-    font-size: 14px;
-    color: #ffc0ff; /* softer label color */
-    margin-top: 6px;
+/* space between number + label */
+#countdown span {
+    margin-bottom: 6px;
 }
 
+/* ===== MESSAGE ===== */
+#message {
+    margin-top: 18px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* ===== FOOTER ===== */
 footer {
     position: absolute;
-    bottom: 10px;
-    color: #c8a0ff; /* matching purple */
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
     font-weight: bold;
-    animation: fade 12s infinite;
+    color: #d8c7ff; /* matches purple vibe */
+    animation: fadeInOut 14s infinite;
 }
 
-@keyframes fade {
+/* ===== FADE ANIMATION ===== */
+@keyframes fadeInOut {
     0% { opacity: 0; }
     50% { opacity: 1; }
     100% { opacity: 0; }
 }
 
-/* Mobile vertical */
-@media (max-width: 600px) {
+/* ===== MOBILE VERTICAL ===== */
+@media (max-width: 600px) and (orientation: portrait) {
+
     #countdown {
         flex-direction: column;
         align-items: center;
     }
 
-    .time-box {
-        width: 200px;
+    #countdown div {
+        width: 220px;   /* wider so text fits */
+        height: 110px;
+        font-size: 20px;
     }
 
     footer {
-        bottom: 5px;
+        bottom: 4px;   /* pushes text to very bottom */
+        font-size: 15px;
+    }
+}
+
+/* ===== MOBILE LANDSCAPE ===== */
+@media (max-width: 900px) and (orientation: landscape) {
+
+    #countdown {
+        gap: 12px;
+    }
+
+    #countdown div {
+        width: 110px;
+        height: 90px;
+        font-size: 18px;
+    }
+
+    footer {
+        bottom: 30px;
     }
 }
