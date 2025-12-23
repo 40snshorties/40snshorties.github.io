@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let days = 21;
-    let hours = 7;
-    let minutes = 0;
+    // Starting time: 81 days, 22 hours, 7 minutes, 0 seconds
+    let days = 81;
+    let hours = 22;
+    let minutes = 7;
     let seconds = 0;
 
     function updateDisplay() {
