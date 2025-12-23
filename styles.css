@@ -16,6 +16,9 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    /* Add a semi-transparent purple overlay to match boxes */
+    background-color: rgba(70, 30, 120, 0.4);
 }
 
 .countdown-container {
@@ -60,7 +63,7 @@ h1 {
 footer {
     position: absolute;
     bottom: 10px;
-    color: #ffd9b3;
+    color: #a080c8; /* match purple-ish boxes */
     font-weight: bold;
     animation: fade 6s infinite;
 }
