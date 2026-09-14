@@ -9,19 +9,45 @@ function updateValue(el, value) {
 
 function updateTimer() {
     const now = new Date();
-    let diff = now - startDate;
-    if (diff < 0) diff = 0;
+    if (now < startDate) {
+        updateValue(document.getElementById("months"), 0);
+        updateValue(document.getElementById("days"), 0);
+        updateValue(document.getElementById("hours"), 0);
+        return;
+    }
 
-    const seconds = Math.floor(diff / 1000) % 60;
-    const minutes = Math.floor(diff / (1000 * 60)) % 60;
-    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    let years = now.getFullYear() - startDate.getFullYear();
+    let months = now.getMonth() - startDate.getMonth();
+    let days = now.getDate() - startDate.getDate();
+    let hours = now.getHours() - startDate.getHours();
 
+    // Adjust for negative hours
+    if (hours < 0) {
+        hours += 24;
+        days--;
+    }
+
+    // Adjust for negative days
+    if (days < 0) {
+        months--;
+        // Get the number of days in the previous month to roll over accurately
+        const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += previousMonth.getDate();
+    }
+
+    // Adjust for negative months
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    const totalMonths = (years * 12) + months;
+
+    updateValue(document.getElementById("months"), totalMonths);
     updateValue(document.getElementById("days"), days);
     updateValue(document.getElementById("hours"), hours);
-    updateValue(document.getElementById("minutes"), minutes);
-    updateValue(document.getElementById("seconds"), seconds);
 }
 
-setInterval(updateTimer, 1000);
+// Update every minute instead of every second since seconds are gone
+setInterval(updateTimer, 60000);
 updateTimer();
